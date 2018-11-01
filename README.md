@@ -1,1 +1,1 @@
-# server
+# node server for reactsound administration
