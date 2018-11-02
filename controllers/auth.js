@@ -1,6 +1,18 @@
 const User = require("../models/user")
 const lodash = require("lodash")
-module.exports = (req, res, next) => {
+const jwt = require("jwt-simple")
+const config = require("../config")
+
+// create token
+function getToken(user) {
+    const timeStamp = new Date().getTime()
+    return jwt.encode({
+        sub: user.id,
+        iat: timeStamp
+    },config.secret)
+}
+
+exports.signup = (req, res, next) => {
     const email = req.body.email
     const password = req.body.password
     User.findOne({ email: email}, (err, existingEmail) => {
@@ -21,8 +33,12 @@ module.exports = (req, res, next) => {
                 if(err) {
                     return next(err)
                 }
-                res.json(user)
+                res.json({ token: getToken(user)})
             })
         }
     })
+}
+
+exports.signin = function(req, res, next) {
+    res.json({ token: getToken(req.user)})
 }
