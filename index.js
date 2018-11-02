@@ -5,10 +5,12 @@ const expressServer = express()
 const router = require('./route')
 const http = require('http')
 const mongoose = require('mongoose')
+
 mongoose.connect(
     'mongodb://jeff:JFRtnjsjade2010@ds147213.mlab.com:47213/reactsound',
-    {useNewUrlParser: true}
+    { useCreateIndex: true, useNewUrlParser: true }  
 )
+
 mongoose.connection
 .once("open", () => console.log("connected to Reactsound Mlab"))
 .on("error", error => console.log('connection error', error))

@@ -8,7 +8,6 @@ const userSchema = new Schema({
 })
 
 userSchema.pre("save", function (next) {
-
     const user = this
     console.log(this)
     bcrypt.genSalt(10, function(err, salt) {
