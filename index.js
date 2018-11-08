@@ -9,7 +9,7 @@ const cors = require('cors')
 mongoose.connect(
     //'mongodb://jeff:JFRtnjsjade2010@ds147213.mlab.com:47213/reactsound', // Mlab mongo server
     //'mongodb://37.187.111.111:27017', // distant linux mongo server
-    'mongodb://localhost:27017/server', //local linux mongo server
+    'mongodb://localhost/server', //local linux mongo server
     { useCreateIndex: true, useNewUrlParser: true }
 )
 
