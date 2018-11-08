@@ -15,6 +15,7 @@ function getToken(user) {
 exports.signup = (req, res, next) => {
     const email = req.body.email
     const password = req.body.password
+    const username = req.body.username
     User.findOne({ email: email}, (err, existingEmail) => {
         if(err) {
             return next(err)
@@ -22,12 +23,13 @@ exports.signup = (req, res, next) => {
         if(existingEmail) {
             return res.status(422).send({error: "email already exist !"})
         }
-        if(lodash.isEmpty(email) || lodash.isEmpty(password)) {
-            return res.status(422).send({ error: "email or password empty !"})
+        if(lodash.isEmpty(email) || lodash.isEmpty(username) || lodash.isEmpty(password)) {
+            return res.status(422).send({ error: "email / username or password empty !"})
         } else {
             const user = new User({
                 email: email,
-                password: password
+                password: password,
+                username: username
             })
             user.save((err) => {
                 if(err) {
@@ -42,3 +44,5 @@ exports.signup = (req, res, next) => {
 exports.signin = function(req, res, next) {
     res.json({ token: getToken(req.user)})
 }
+
+
