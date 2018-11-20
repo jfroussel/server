@@ -14,7 +14,7 @@ mongoose.connect(
 mongoose.connection
     .once("open", () => console.log("connected to Reactsound Mlab"))
     .on("error", error => console.log('connection error', error))
-
+expressServer.set('json spaces', 2)
 expressServer.use(morgan('combined'))
 expressServer.use(bodyParser.json({ type: '*/*' }))
 expressServer.use(cors())

@@ -43,7 +43,8 @@ exports.signup = (req, res, next) => {
 }
 
 exports.signin = function (req, res, next) {
-    res.json({ token: getToken(req.user) })
+    console.log('SIGNIN ',req.user)
+    res.json({ token: getToken(req.user),info: req.user })
 }
 
 exports.users = function (req, res, next) {
