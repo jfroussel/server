@@ -10,7 +10,8 @@ module.exports = (expressServer) => {
         res.send({ test: 666 })
     })
     expressServer.post("/signin", requireValidCredentials, AuthController.signin )
-    expressServer.get("/account", requireToken, function(req, res) {
-        res.send({ test: 666 })
-    })
+    
+    expressServer.get("/accounts", AuthController.accounts)
+    
+    expressServer.get("/users", AuthController.users)
 }

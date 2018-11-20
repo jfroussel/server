@@ -4,6 +4,7 @@
   "description": "node server for reactsound",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.18.0",
     "bcrypt": "^3.0.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.18.3",
@@ -20,7 +21,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server/index.js"
-    
   },
   "author": "jfroussel",
   "license": "ISC"
