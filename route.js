@@ -13,7 +13,9 @@ module.exports = (expressServer) => {
     expressServer.post("/signin", requireValidCredentials, AuthController.signin )
     expressServer.get("/accounts", AuthController.accounts)
     expressServer.get("/users", AuthController.users)
-    expressServer.post("/catalogCreate", CatalogController.create )
-    expressServer.get("/catalog", CatalogController.readAll)
+    expressServer.post("/sound", CatalogController.create )
+    expressServer.get("/sounds", CatalogController.readAll)
+    expressServer.get("/sound/:id", CatalogController.read)
+    expressServer.delete("/sound/:id", CatalogController.delete)
     
 }

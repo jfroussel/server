@@ -44,14 +44,20 @@ exports.create = (req, res, next) => {
                 if (err) {
                     return next(err)
                 }
-                res
+                res.send(catalog)
             })
         }
     })
 
 }
 exports.read = (req, res, next) => {
-    
+    const {id} = req.params
+    Catalog.findById(id).then( (err,catalog) => {
+        if(err) {
+            return next(err)
+        }
+        res.send({result: catalog})
+    })
 }
 
 exports.readAll = (req, res, next) => {
@@ -65,9 +71,14 @@ exports.update = (req, res, next) => {
 }
 
 exports.delete = (req, res, next) => {
-
+    const {id} = req.params
+    Catalog.findByIdAndRemove(id).then((err, sound) => {
+        if(err) {
+            return next(err)
+        }
+        res.send(sound)
+    })
 }
-
 
 exports.signin = function (req, res, next) {
     console.log('SIGNIN ',req.user)
