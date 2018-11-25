@@ -9,6 +9,7 @@ exports.create = (req, res, next) => {
     const description = req.body.description
     const filename = req.body.filename
     const author = req.body.author
+    const uid = req.body.uid
     const bpm = req.body.bpm
     const tone = req.body.tone
     const genres = req.body.genres
@@ -32,6 +33,7 @@ exports.create = (req, res, next) => {
                 description,
                 filename,
                 author,
+                uid,
                 bpm,
                 tone,
                 genres,

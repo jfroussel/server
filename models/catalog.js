@@ -6,6 +6,7 @@ const catalogSchema = new Schema({
     description: String,
     filename: { type: String, unique:true, lowercase:true },
     author: String,
+    uid:String,
     bpm: Number,
     tone: String,
     genres: Array,
