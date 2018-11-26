@@ -7,11 +7,19 @@ const requireValidCredentials = passport.authenticate("local", { session: false 
 
 module.exports = (expressServer) => {
     expressServer.post("/signup", AuthController.signup)
-    expressServer.get("/ressourceSecrete", requireToken, function(req, res) {
+    expressServer.get("/ressourceSecrete",  function(req, res) {
         res.send({ test: 666 })
+    })
+    expressServer.get("/ressourceSecret/:id", (req,res,next) => {
+        res.send('result :' + req.params.id)
     })
     expressServer.post("/signin", requireValidCredentials, AuthController.signin )
     expressServer.get("/accounts", AuthController.accounts)
+   
+    expressServer.get('/account/:id', (req, res) => {
+        res.send({ result: 'result' + req.params.id})
+      });
+
     expressServer.get("/users", AuthController.users)
     expressServer.post("/sound", CatalogController.create )
     expressServer.get("/sounds", CatalogController.readAll)

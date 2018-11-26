@@ -54,11 +54,10 @@ exports.create = (req, res, next) => {
 }
 exports.read = (req, res, next) => {
     const {id} = req.params
-    Catalog.findById(id).then( (err,catalog) => {
-        if(err) {
-            return next(err)
-        }
-        res.send({result: catalog})
+    Catalog.findById(id).then( (catalog) => {
+        console.log('CATALOG : ',catalog)
+        
+        res.send(catalog)
     })
 }
 
@@ -74,10 +73,7 @@ exports.update = (req, res, next) => {
 
 exports.delete = (req, res, next) => {
     const {id} = req.params
-    Catalog.findByIdAndRemove(id).then((err, sound) => {
-        if(err) {
-            return next(err)
-        }
+    Catalog.findByIdAndRemove(id).then((sound) => {
         res.send(sound)
     })
 }

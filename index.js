@@ -22,6 +22,8 @@ const port = 3050
 
 const server = http.createServer(expressServer)
 router(expressServer)
-server.listen(port)
+server.listen(port,() => {
+    console.log(`welcome node server reactsound !  on port:`, port)
+})
 
-console.log(`welcome node server reactsound !  on port:`, port)
+

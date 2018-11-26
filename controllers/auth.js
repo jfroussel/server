@@ -55,7 +55,6 @@ exports.users = function (req, res, next) {
 
 exports.accounts = (req, res, next) => {
     User.find().then((result) => {
-        
         res.json(result)
     })
 }
