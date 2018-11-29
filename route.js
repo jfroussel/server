@@ -22,8 +22,10 @@ module.exports = (expressServer) => {
 
     expressServer.get("/users", AuthController.users)
     expressServer.post("/sound", CatalogController.create )
+
     expressServer.get("/sounds", CatalogController.readAll)
     expressServer.get("/sound/:id", CatalogController.read)
+    expressServer.put("/sound/:id", CatalogController.update)
     expressServer.delete("/sound/:id", CatalogController.delete)
     
 }

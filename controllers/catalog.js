@@ -50,13 +50,54 @@ exports.create = (req, res, next) => {
             })
         }
     })
+}
+exports.update = (req, res, next) => {
+    const { id } = req.params
+    const {title} = req.body
+    const {description} = req.body
+    const {filename} = req.body
+    const {author} = req.body
+    const {uid} = req.body
+    const {bpm} = req.body
+    const {tone} = req.body
+    const {genres} = req.body
+    const {moods} = req.body
+    const {loops} = req.body
+    const {lenght} = req.body
+    const {instruments} = req.body
 
+    Catalog.findByIdAndUpdate(id, {multi:true, new: true }, (err) => {
+        if (err) {
+            return next(err)
+        }
+        else {
+            const sound = {
+                title,
+                description,
+                filename,
+                author,
+                uid,
+                bpm,
+                tone,
+                genres,
+                moods,
+                loops,
+                lenght,
+                instruments
+            }
+
+            res.send(sound)
+           
+            console.log('UPDATE : ', sound)
+
+        }
+    })
 }
 exports.read = (req, res, next) => {
-    const {id} = req.params
-    Catalog.findById(id).then( (catalog) => {
-        console.log('CATALOG : ',catalog)
-        
+    const { id } = req.params
+    Catalog.findById(id).then((catalog) => {
+        console.log('CATALOG : ', catalog)
+
         res.send(catalog)
     })
 }
@@ -67,20 +108,18 @@ exports.readAll = (req, res, next) => {
     })
 }
 
-exports.update = (req, res, next) => {
 
-}
 
 exports.delete = (req, res, next) => {
-    const {id} = req.params
+    const { id } = req.params
     Catalog.findByIdAndRemove(id).then((sound) => {
         res.send(sound)
     })
 }
 
 exports.signin = function (req, res, next) {
-    console.log('SIGNIN ',req.user)
-    res.json({ token: getToken(req.user),info: req.user })
+    console.log('SIGNIN ', req.user)
+    res.json({ token: getToken(req.user), info: req.user })
 }
 
 exports.users = function (req, res, next) {
@@ -91,7 +130,7 @@ exports.users = function (req, res, next) {
 
 exports.accounts = (req, res, next) => {
     User.find().then((result) => {
-        
+
         res.json(result)
     })
 }
