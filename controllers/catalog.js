@@ -66,7 +66,7 @@ exports.update = (req, res, next) => {
     const {lenght} = req.body
     const {instruments} = req.body
 
-    Catalog.findByIdAndUpdate(id, {multi:true, new: true }, (err) => {
+    Catalog.findByIdAndUpdate(id, {$set: req.body}, {multi:true, new: true }, (err) => {
         if (err) {
             return next(err)
         }
@@ -85,8 +85,10 @@ exports.update = (req, res, next) => {
                 lenght,
                 instruments
             }
-
-            res.send(sound)
+           
+                res.send(sound)
+            
+            
            
             console.log('UPDATE : ', sound)
 
@@ -103,7 +105,9 @@ exports.read = (req, res, next) => {
 }
 
 exports.readAll = (req, res, next) => {
-    Catalog.find().then((response) => {
+    const {id} = req.params
+    Catalog.find({uid:id}).then((response) => {
+        console.log('readAll : ', response)
         res.json(response)
     })
 }
