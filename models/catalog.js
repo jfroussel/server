@@ -5,6 +5,7 @@ const catalogSchema = new Schema({
     title: { type: String, unique:true, uppercase:true },
     description: String,
     filename: { type: String, unique:true, lowercase:true },
+    soundUrl: { type: String, unique:true },
     author: String,
     uid:String,
     bpm: Number,

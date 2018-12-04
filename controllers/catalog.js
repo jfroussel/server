@@ -8,6 +8,7 @@ exports.create = (req, res, next) => {
     const title = req.body.title
     const description = req.body.description
     const filename = req.body.filename
+    const soundUrl = req.body.soundUrl
     const author = req.body.author
     const uid = req.body.uid
     const bpm = req.body.bpm
@@ -25,13 +26,14 @@ exports.create = (req, res, next) => {
         if (existingTitle) {
             return res.status(422).send({ error: "title already exist !" })
         }
-        if (lodash.isEmpty(title) || lodash.isEmpty(filename)) {
-            return res.status(422).send({ error: "title or filename empty !" })
+        if (lodash.isEmpty(title) || lodash.isEmpty(soundUrl)) {
+            return res.status(422).send({ error: "title or soundUrl empty !" })
         } else {
             const catalog = new Catalog({
                 title,
                 description,
                 filename,
+                soundUrl,
                 author,
                 uid,
                 bpm,
@@ -56,6 +58,7 @@ exports.update = (req, res, next) => {
     const {title} = req.body
     const {description} = req.body
     const {filename} = req.body
+    const {soundUrl} = req.body
     const {author} = req.body
     const {uid} = req.body
     const {bpm} = req.body
@@ -75,6 +78,7 @@ exports.update = (req, res, next) => {
                 title,
                 description,
                 filename,
+                soundUrl,
                 author,
                 uid,
                 bpm,
@@ -111,7 +115,6 @@ exports.readAll = (req, res, next) => {
         res.json(response)
     })
 }
-
 
 
 exports.delete = (req, res, next) => {
