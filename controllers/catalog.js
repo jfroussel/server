@@ -7,7 +7,6 @@ const axios = require("axios")
 exports.create = (req, res, next) => {
     const title = req.body.title
     const description = req.body.description
-    const filename = req.body.filename
     const soundUrl = req.body.soundUrl
     const author = req.body.author
     const uid = req.body.uid
@@ -32,7 +31,6 @@ exports.create = (req, res, next) => {
             const catalog = new Catalog({
                 title,
                 description,
-                filename,
                 soundUrl,
                 author,
                 uid,
@@ -57,7 +55,6 @@ exports.update = (req, res, next) => {
     const { id } = req.params
     const {title} = req.body
     const {description} = req.body
-    const {filename} = req.body
     const {soundUrl} = req.body
     const {author} = req.body
     const {uid} = req.body
@@ -77,7 +74,6 @@ exports.update = (req, res, next) => {
             const sound = {
                 title,
                 description,
-                filename,
                 soundUrl,
                 author,
                 uid,
@@ -89,11 +85,7 @@ exports.update = (req, res, next) => {
                 lenght,
                 instruments
             }
-           
                 res.send(sound)
-            
-            
-           
             console.log('UPDATE : ', sound)
 
         }
