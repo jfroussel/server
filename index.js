@@ -1,4 +1,6 @@
 const express = require('express')
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const expressServer = express()
@@ -20,10 +22,13 @@ expressServer.use(morgan('combined'))
 expressServer.use(bodyParser.json({ type: '*/*' }))
 expressServer.use(cors())
 expressServer.use(fileUpload())
+expressServer.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 const port = 3050
 
 const server = http.createServer(expressServer)
+
 router(expressServer)
+
 server.listen(port,() => {
     console.log(`welcome node server reactsound !  on port:`, port)
 })

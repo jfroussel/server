@@ -1,0 +1,241 @@
+{
+    "info": {
+        "title": "API REST Documentation for reactsound",
+        "version": "1.0.0",
+        "license": {
+            "name": "Licence MIT"
+        },
+        "description": "Reactsound Server Api Documentation"
+    },
+    "basePath": "/api-docs",
+    "host": "localhost:3050",
+    "tags": [
+        {
+            "name": "users",
+            "description": "Users http request"
+        },
+        {
+            "name": "sounds",
+            "description": "sounds http request"
+        },
+        {
+            "name": "accounts",
+            "description": "accounts http request"
+        },
+        {
+            "name": "auth",
+            "description": "auth http request"
+        }
+    ],
+    "paths": {
+        "/signup": {
+            "post": {
+                "tags": ["auth"],
+                "summary": "/signup",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": []
+            }
+        },
+        "/signin": {
+            "post": {
+                "tags": ["auth"],
+                "summary": "/signin",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": []
+            }
+        },
+        "/accounts": {
+            "get": {
+                "tags": [
+                    "accounts"
+                ],
+                "summary": "/accounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": []
+            }
+        },
+        "/account/{id}": {
+            "get": {
+                "tags": [
+                    "accounts"
+                ],
+                "summary": "/account/{id}",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "/users",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": []
+            }
+        },
+        "/sound": {
+            "post": {
+                "tags": [
+                    "sounds"
+                ],
+                "summary": "/sound",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "description",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "soundUrl",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "author",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "uid",
+                        "in": "body",
+                        "required": true
+                    },
+                    {
+                        "name": "bpm",
+                        "in": "body"
+                    },
+                    {
+                        "name": "tone",
+                        "in": "body"
+                    },
+                    {
+                        "name": "genres",
+                        "in": "body"
+                    },
+                    {
+                        "name": "moods",
+                        "in": "body"
+                    },
+                    {
+                        "name": "loops",
+                        "in": "body"
+                    },
+                    {
+                        "name": "lenght",
+                        "in": "body"
+                    },
+                    {
+                        "name": "instruments",
+                        "in": "body"
+                    }  
+                ]
+            }
+        },
+        "/sounds/{id}": {
+            "get": {
+                "tags": [
+                    "sounds"
+                ],
+                "summary": "/sounds/{id}",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "params",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/sound/{id}": {
+            "get": {
+                "tags": [
+                    "sounds"
+                ],
+                "summary": "/sound/{id}",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "sounds"
+                ],
+                "summary": "/sound/{id}",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "sounds"
+                ],
+                "summary": "/sound/{id}",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        "/sound-upload": {
+            "post": {
+                "tags": [
+                    "sounds"
+                ],
+                "summary": "/sound-upload",
+                "consumes": [
+                    "application/json"
+                ],
+                "parameters": []
+            }
+        }
+    },
+    "swagger": "2.0"
+}

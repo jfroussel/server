@@ -12,15 +12,17 @@
     "express": "^4.16.4",
     "express-fileupload": "^1.0.0",
     "jwt-simple": "^0.5.5",
+    "mocha": "^5.2.0",
     "mongoose": "^5.3.8",
     "morgan": "^1.9.1",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha",
     "server": "nodemon server/index.js"
   },
   "author": "jfroussel",
