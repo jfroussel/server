@@ -51,22 +51,23 @@ exports.create = (req, res, next) => {
         }
     })
 }
+
 exports.update = (req, res, next) => {
     const { id } = req.params
-    const {title} = req.body
-    const {description} = req.body
-    const {soundUrl} = req.body
-    const {author} = req.body
-    const {uid} = req.body
-    const {bpm} = req.body
-    const {tone} = req.body
-    const {genres} = req.body
-    const {moods} = req.body
-    const {loops} = req.body
-    const {lenght} = req.body
-    const {instruments} = req.body
+    const { title } = req.body
+    const { description } = req.body
+    const { soundUrl } = req.body
+    const { author } = req.body
+    const { uid } = req.body
+    const { bpm } = req.body
+    const { tone } = req.body
+    const { genres } = req.body
+    const { moods } = req.body
+    const { loops } = req.body
+    const { lenght } = req.body
+    const { instruments } = req.body
 
-    Catalog.findByIdAndUpdate(id, {$set: req.body}, {multi:true, new: true }, (err) => {
+    Catalog.findByIdAndUpdate(id, { $set: req.body }, { multi: true, new: true }, (err) => {
         if (err) {
             return next(err)
         }
@@ -85,7 +86,7 @@ exports.update = (req, res, next) => {
                 lenght,
                 instruments
             }
-                res.send(sound)
+            res.send(sound)
             console.log('UPDATE : ', sound)
 
         }
@@ -101,8 +102,8 @@ exports.read = (req, res, next) => {
 }
 
 exports.readAll = (req, res, next) => {
-    const {id} = req.params
-    Catalog.find({uid:id}).then((response) => {
+    const { id } = req.params
+    Catalog.find({ uid: id }).then((response) => {
         console.log('readAll : ', response)
         res.json(response)
     })

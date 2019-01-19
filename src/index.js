@@ -12,13 +12,14 @@ const http = require('http')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
+
 mongoose.connect(
     'mongodb://51.15.190.152:27017/server',
     { useCreateIndex: true, useNewUrlParser: true }
 )
 
 mongoose.connection
-    .once("open", () => console.log("connected to Reactsound Mlab"))
+    .once("open", () => console.log("connected to Reactsound server"))
     .on("error", error => console.log('connection error', error))
 expressServer.set('json spaces', 2)
 expressServer.use(morgan('combined'))
