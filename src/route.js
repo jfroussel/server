@@ -1,6 +1,4 @@
 const AuthController = require("./controllers/auth")
-const CatalogController = require("./controllers/catalog")
-const SoundController = require("./controllers/sound")
 const CompanyController = require("./controllers/company")
 require("./services/passport")
 const passport = require("passport")
@@ -14,15 +12,8 @@ module.exports = (expressServer) => {
     expressServer.get('/account/:id', (req, res) => {
         res.send({ result: 'result' + req.params.id})
       });
-    expressServer.get("/users", AuthController.users)
-    expressServer.post("/sound", CatalogController.create )
-    expressServer.get("/sounds/:id", CatalogController.readAll)
-    expressServer.get("/sound/:id", CatalogController.read)
-    expressServer.put("/sound/:id", CatalogController.update)
-    expressServer.delete("/sound/:id", CatalogController.delete)
-    expressServer.post("/sound-upload", SoundController.create)
-   
-    // Companies CRUD
+    
+    // Companies 
     expressServer.get("/companies", CompanyController.readAll)
     expressServer.get("/companies/:id", CompanyController.read)
     expressServer.delete("/companies/:id", CompanyController.delete)
