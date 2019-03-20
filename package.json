@@ -12,6 +12,7 @@
     "express": "^4.16.4",
     "express-fileupload": "^1.0.0",
     "jwt-simple": "^0.5.5",
+    "mailchimp-api-v3": "^1.12.1",
     "mocha": "^5.2.0",
     "mongoose": "^5.3.8",
     "morgan": "^1.9.1",

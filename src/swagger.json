@@ -1,11 +1,11 @@
 {
     "info": {
-        "title": "API REST Documentation for reactsound",
+        "title": "API REST Documentation for reactland",
         "version": "1.0.0",
         "license": {
             "name": "Licence MIT"
         },
-        "description": "Reactsound Server Api Documentation"
+        "description": "Reactland Server Api Documentation"
     },
     "basePath": "/api-docs",
     "host": "localhost:3050",

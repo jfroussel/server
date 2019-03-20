@@ -12,6 +12,7 @@ const http = require('http')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const fileUpload = require('express-fileupload')
+const Mailchimp = require('mailchimp-api-v3')
 
 mongoose.connect(
     'mongodb://51.15.190.152:27017/server',
@@ -31,7 +32,6 @@ expressServer.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument,
 const port = 3050
 
 const server = http.createServer(expressServer)
-
 router(expressServer)
 
 server.listen(port,() => {

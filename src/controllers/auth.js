@@ -17,6 +17,7 @@ exports.signup = (req, res, next) => {
     const email = req.body.email
     const password = req.body.password
     const username = req.body.username
+    const subscribe = req.body.subscribe
     User.findOne({ email: email }, (err, existingEmail) => {
         if (err) {
             return next(err)
@@ -30,7 +31,8 @@ exports.signup = (req, res, next) => {
             const user = new User({
                 email: email,
                 password: password,
-                username: username
+                username: username,
+                subscribe: subscribe
             })
             user.save((err) => {
                 if (err) {
@@ -42,21 +44,44 @@ exports.signup = (req, res, next) => {
     })
 }
 
+exports.resetPassword = (req, res, next) => {
+    const email = req.body.email
+    const password = req.body.password
+
+    User.findOneAndUpdate({email: email}, {multi:true, new: true }, (err) => {
+        if (err) {
+            return next(err)
+        }
+        else {
+            const user = {
+                password
+            }
+            res.send(user)
+            console.log('user password reset', user)
+        }
+    })
+}
+
 exports.signin = function (req, res, next) {
     console.log('SIGNIN ',req.user)
     res.json({ token: getToken(req.user),info: req.user })
+    
 }
 
-exports.users = function (req, res, next) {
-    axios.get('https://jsonplaceholder.typicode.com/users').then((response) => {
-        res.json(response.data)
-    })
-}
+
 
 exports.accounts = (req, res, next) => {
     User.find().then((result) => {
         res.json(result)
     })
+}
+
+exports.subscribe = (req, res, next) => {
+    console.log('subscribe')
+}
+
+exports.unSubscribe = (req, res, next) => {
+    console.log('unSubscribe')
 }
 
 
